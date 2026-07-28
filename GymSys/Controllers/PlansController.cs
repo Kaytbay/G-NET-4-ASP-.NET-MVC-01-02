@@ -1,6 +1,7 @@
 ﻿using GymSys.DbContexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GymSys.Controllers
 {
@@ -18,6 +19,16 @@ namespace GymSys.Controllers
             var Plans =await dbContext.Plans.ToListAsync();
 
             return View(Plans);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var plan = await dbContext.Plans.FindAsync(id);
+
+            if (plan == null) {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(plan);
         }
 
          
