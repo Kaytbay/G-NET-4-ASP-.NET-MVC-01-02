@@ -15,9 +15,9 @@ namespace GymSys.DAL.Repositories.Classes
 
         readonly GymDbContext _dbContext;
 
-        public PlanRepository()
+        public PlanRepository(GymDbContext dbContext)
         {
-            _dbContext = new GymDbContext();
+            _dbContext = dbContext;
         }
 
 
